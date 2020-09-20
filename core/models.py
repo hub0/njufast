@@ -39,7 +39,6 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-# Create your models here.
 class User(AbstractBaseUser):
     name = models.CharField(_('full name'), max_length=100, blank=False)
     email = models.EmailField(_('email address'), unique=True)
@@ -50,6 +49,7 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
 
     def __str__(self):
         return f'{self.name} {self.email}'

@@ -1,0 +1,16 @@
+{% extends 'info/base.html' %}
+
+{% block content %}
+	<div class="content">
+		<p>
+		HIFAST is one of the key science projects of the Five-hundred Aperture Spherical Telescope (FAST), dedicated to reveal the high resolution neutral hydrogen (HI) structures of the Galaxy.
+		</p>
+		<p>
+		Our team members are
+		{% for member in members %}
+			{{member}} ({{member.affiliation}}),  
+		{% endfor %}
+		etc.
+		</p>
+	</div>
+{% endblock content %}

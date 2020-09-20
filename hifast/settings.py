@@ -56,7 +56,7 @@ ROOT_URLCONF = 'hifast.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,11 +76,28 @@ WSGI_APPLICATION = 'hifast.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {},
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #},
+    'primary': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'NAME': os.path.join(BASE_DIR, 'primary.sqlite3'),
+    },
+    'data': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'data.sqlite3'),
+    },
+    #'data': {
+    #    'NAME': 'hifast'
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'USER': 'postgres',
+    #    'PASSWORD': '',
+    #},
 }
+
+DATABASE_ROUTERS = ['hifast.router.DataRouter', 'hifast.router.PrimaryRouter']
 
 
 # Password validation

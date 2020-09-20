@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Affiliation, TeamMember
+from .models import Affiliation, TeamMember, Publication
 
 class AffiliationAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation')
@@ -29,3 +29,4 @@ class TeamMemberAdmin(admin.ModelAdmin):
 
 admin.site.register(Affiliation, AffiliationAdmin)
 admin.site.register(TeamMember, TeamMemberAdmin)
+admin.site.register(Publication)

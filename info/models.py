@@ -25,3 +25,23 @@ class TeamMember(models.Model):
     def __str__(self):
         return self.user.name
 
+class Publication(models.Model):
+    title = models.CharField(_('title'), max_length=200, blank=False)
+    author = models.TextField(_('author'), blank=False)
+    prime_author = models.ForeignKey(
+        TeamMember,
+        on_delete=models.CASCADE,
+    )
+    publisher = models.CharField(_('journal'), max_length=200, null=True)
+    year = models.IntegerField(_('year'), blank=False)
+    arxiv_url = models.URLField('arxiv', null=True)
+    ads_url = models.URLField('ADS', null=True)
+    pdf_file = models.FileField(
+        _('PDF file'), 
+        upload_to='publications/', 
+        null=True,
+    )
+
+    def __str__(self):
+        return f"{self.prime_author} {self.year}"
+
