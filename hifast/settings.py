@@ -149,3 +149,15 @@ MEDIA_URL = '/media/'
 
 # User custom user model for authentication
 AUTH_USER_MODEL = 'core.User'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+)
+
+LOGIN_REDIRECT_URL = 'user_profile'
+
+LOGOUT_REDIRECT_URL = 'info-index'

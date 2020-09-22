@@ -13,9 +13,7 @@ urlpatterns = [
 
     path(
             'logout/', 
-            auth_views.LogoutView.as_view(
-                    template_name='core/logout.html'
-            ), 
+            auth_views.LogoutView.as_view(), 
             name='user_logout'
     ),
 
@@ -38,7 +36,7 @@ urlpatterns = [
     path(
             'password-reset-confirm/<uidb64>/<token>/', 
             auth_views.PasswordResetConfirmView.as_view(
-                template_name='users/password_reset_confirm.html'
+                template_name='core/password_reset_confirm.html'
             ), 
             name='password_reset_confirm',
     ),
@@ -46,7 +44,7 @@ urlpatterns = [
     path(
             'password-reset-complete/', 
             auth_views.PasswordResetCompleteView.as_view(
-                template_name='users/password_reset_complete.html'
+                template_name='core/password_reset_complete.html'
             ), 
             name='password_reset_complete',
     ),
