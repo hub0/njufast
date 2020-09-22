@@ -17,13 +17,14 @@ class Affiliation(models.Model):
 
 class TeamMember(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(_('full name'), max_length=100, blank=False)
     affiliation = models.ForeignKey(
         Affiliation,
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
-        return self.user.name
+        return self.name
 
 class Publication(models.Model):
     title = models.CharField(_('title'), max_length=200, blank=False)

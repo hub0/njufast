@@ -8,9 +8,9 @@ class UserCreationForm(forms.ModelForm):
     A form for creating new users.
     Includes all the required fields, and a repeated password.
     """
-    name = forms.CharField(
-            label='Full Name',
-    )
+    #name = forms.CharField(
+    #        label='Full Name',
+    #)
     password1 = forms.CharField(
             label='Password',
             widget=forms.PasswordInput,
@@ -22,7 +22,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['name', 'email', 'is_active', 'is_admin']
+        fields = ['email', 'is_active', 'is_admin']
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -51,7 +51,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['name', 'email', 'password', 'is_active', 'is_admin']
+        fields = ['email', 'password', 'is_active', 'is_admin']
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -70,9 +70,9 @@ class UserUpdateEmailForm(forms.ModelForm):
 
 class UserUpdateForm(forms.ModelForm):
     """
-    A form for updating users' name and email address by users themselves.
+    A form for updating users' email address by users themselves.
     """
 
     class Meta:
         model = User
-        fields = ['name', 'email']
+        fields = ['email']

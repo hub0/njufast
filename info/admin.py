@@ -6,14 +6,14 @@ class AffiliationAdmin(admin.ModelAdmin):
     ordering = ('name', 'abbreviation')
 
 class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('get_name', 'get_email', 'get_affiliation')
-    search_field = ('get_name', 'get_email')
+    list_display = ('name', 'get_email', 'get_affiliation')
+    search_field = ('name', 'get_email')
     #ordering = ('get_name', 'get_email', 'get_affiliation')
 
-    def get_name(self, obj):
-        return obj.user.name
-    get_name.admin_order_field = 'user__name'
-    get_name.short_description = 'Full Name'
+    #def get_name(self, obj):
+    #    return obj.user.name
+    #get_name.admin_order_field = 'user__name'
+    #get_name.short_description = 'Full Name'
 
     def get_email(self, obj):
         return obj.user.email

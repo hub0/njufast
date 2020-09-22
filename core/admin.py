@@ -15,17 +15,17 @@ class UserAdmin(BaseUserAdmin):
     add_form = UserCreationForm
 
     # fields to display in admin page
-    list_display = ('name', 'email', 'is_admin', 'is_active')
+    list_display = ('email', 'is_admin', 'is_active')
     # fields to filter in admin page
     list_filter = ('is_admin', )
 
-    search_fields = ('name', 'email',)
-    ordering = ('name', 'email',)
+    search_fields = ('email',)
+    ordering = ('email',)
     filter_horizontal = ()
 
     # display in user info page
     fieldsets = (
-        ('Info', {'fields': ('name',)}),
+        #('Info', {'fields': ('name',)}),
         ('Authentication', {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_admin', 'is_active')}),
     )
@@ -34,7 +34,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('name', 'email', 'password1', 'password2'),
+            'fields': ('email', 'password1', 'password2'),
         }),
     )
 
