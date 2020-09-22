@@ -43,7 +43,7 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     """
-    A form usded in admin system for updating users.
+    A form used in admin system for updating users.
     Includes all the fields on the user, but replaces the password
     field with admin's password hash display field.
     """
@@ -67,3 +67,12 @@ class UserUpdateEmailForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email']
+
+class UserUpdateForm(forms.ModelForm):
+    """
+    A form for updating users' name and email address by users themselves.
+    """
+
+    class Meta:
+        model = User
+        fields = ['name', 'email']
